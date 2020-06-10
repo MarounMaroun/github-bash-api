@@ -40,3 +40,13 @@ function prs_count() {
   body=$(base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls")
   echo "$body" | jq '. | length'
 }
+
+function get_pr_author() {
+  body=$(base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls/$PR_NUM")
+  echo "$body" | jq '.user.login'
+}
+
+function get_pr_changed_files_count() {
+  body=$(base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls/$PR_NUM")
+  echo "$body" | jq '.changed_files'
+}
