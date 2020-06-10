@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 source "base_api.sh"
+source "utils.sh"
 
-command -v jq >/dev/null 2>&1 || { echo >&2 "Please install 'jq'"; exit 1; }
+utils::validate_jq
 
 TOKEN="$1"
 OWNER="$2"
