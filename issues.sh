@@ -9,7 +9,7 @@ OWNER="$2"
 GITHUB_REPO="$3"
 
 function list_issues() {
-  echo $(base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues")
+  base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues"
 }
 
 function count_issues() {

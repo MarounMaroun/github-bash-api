@@ -9,7 +9,7 @@ OWNER="$2"
 GITHUB_REPO="$3"
 
 function list_user_repositories() {
-  echo $(base_api::call "$TOKEN" "users/$OWNER/repos")
+  base_api::call "$TOKEN" "users/$OWNER/repos"
 }
 
 function list_user_repositories_name_only() {
@@ -18,5 +18,5 @@ function list_user_repositories_name_only() {
 }
 
 function get_repository() {
-  echo $(base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO")
+  base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO"
 }

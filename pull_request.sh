@@ -10,15 +10,15 @@ GITHUB_REPO="$3"
 PR_NUM="$4"
 
 function list_prs() {
-  echo $(base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls")
+  base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls"
 }
 
 function get_pr() {
-  echo $(base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls/$PR_NUM")
+  base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls/$PR_NUM"
 }
 
 function list_commits() {
-  echo $(base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls/$PR_NUM/commits")
+  base_api::call "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls/$PR_NUM/commits"
 }
 
 function list_commits_message_only() {
