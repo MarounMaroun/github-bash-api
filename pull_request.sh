@@ -63,3 +63,8 @@ function close_pr() {
   # payload should be: {"state": "close", "body": <message>}
   base_api::patch "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls/$PR_NUM" "$PAYLOAD"
 }
+
+function get_pr_labels() {
+  body=$(base_api::get "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues/$PR_NUM")
+  echo "$body" | jq -r '.labels[].name'
+}
