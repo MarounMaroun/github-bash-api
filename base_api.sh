@@ -17,3 +17,11 @@ base_api::post() {
   body=$(curl -XPOST -sSL -H "Authorization: token $token" -H "$GITHUB_API_HEADER" "$GITHUB_API_URI/$api" --data "$data")
   echo "$body"
 }
+
+base_api::patch() {
+  local -r token="$1"
+  local -r api="$2"
+  local -r data="$3"
+  body=$(curl -XPATCH -sSL -H "Authorization: token $token" -H "$GITHUB_API_HEADER" "$GITHUB_API_URI/$api" --data "$data")
+  echo "$body"
+}
