@@ -9,7 +9,7 @@ TOKEN="$1"
 OWNER="$2"
 GITHUB_REPO="$3"
 PR_NUM="$4"
-BODY="$5"
+PAYLOAD="$5"
 
 function list_prs() {
   base_api::get "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls"
@@ -54,6 +54,12 @@ function get_pr_changed_files_count() {
 }
 
 function comment_on_pr() {
-  res=$(base_api::post "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues/$PR_NUM/comments" "{\"body\": \"$BODY\"}")
+  # payload should be: {"body": <message>}
+  res=$(base_api::post "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues/$PR_NUM/comments" "$PAYLOAD")
   echo "$res" | jq '.body'
+}
+
+function close_pr() {
+  # payload should be: {"state": "close", "body": <message>}
+  base_api::patch "$TOKEN" "repos/$OWNER/$GITHUB_REPO/pulls/$PR_NUM" "$PAYLOAD"
 }
