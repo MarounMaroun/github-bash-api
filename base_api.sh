@@ -25,3 +25,10 @@ base_api::patch() {
   body=$(curl -XPATCH -sSL -H "Authorization: token $token" -H "$GITHUB_API_HEADER" "$GITHUB_API_URI/$api" --data "$data")
   echo "$body"
 }
+
+base_api::delete() {
+  local -r token="$1"
+  local -r api="$2"
+  body=$(curl -XDELETE -sSL -H "Authorization: token $token" -H "$GITHUB_API_HEADER" "$GITHUB_API_URI/$api")
+  echo "$body"
+}
