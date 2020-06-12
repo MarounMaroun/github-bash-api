@@ -68,3 +68,13 @@ function get_pr_labels() {
   body=$(base_api::get "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues/$PR_NUM")
   echo "$body" | jq -r '.labels[].name'
 }
+
+function add_pr_label() {
+  # payload should be: {"labels": ["label2", "label2"]}
+  base_api::post "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues/$PR_NUM/labels" "$PAYLOAD"
+}
+
+function remove_pr_label() {
+  # payload should be the name of the label
+  base_api::delete "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues/$PR_NUM/labels/$PAYLOAD"
+}
