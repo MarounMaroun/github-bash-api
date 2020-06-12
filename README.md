@@ -8,7 +8,7 @@ You can copy any of the functions and use it wherever you want. For example, in 
 
 ## Usage
 
-Each file aggregates functions that are relevant for the specific API.
+Each file aggregates functions that are relevant for the specific API. You can copy-paste whichever function that suits your needs.
 
 For example, the `pull_request.sh` script have functions that expose the [Pull Requests API](https://developer.github.com/v3/pulls/).
 
@@ -19,6 +19,12 @@ You can test each function by simply calling it inside the file. For example, to
 ```
 
 Which yields the number of PRs for the given repository.
+
+For commenting on a PR, you can comment our the relevant function, and execute:
+
+```bash
+./pull_request.sh <token> <owner> <repo> <pr_num> <comment>
+```
 
 ## Contributing
 
