@@ -12,18 +12,24 @@ Each file aggregates functions that are relevant for the specific API. You can c
 
 For example, the `pull_request.sh` script have functions that expose the [Pull Requests API](https://developer.github.com/v3/pulls/).
 
-You can test each function by simply calling it inside the file. For example, to get the PRs count in some repository, you can call the `prs_count` function in the `pull_requests.sh` file, and then execute:
+You can call whichever function you want from your script. For example, to count the PRs of some repository:
 
 ```bash
-./pull_request.sh <token> <owner> <repo>
+#!/usr/bin/env bash
+
+source "pull_request.sh"
+
+prs_count <token> <owner> <repo>
 ```
 
-Which yields the number of PRs for the given repository.
-
-For commenting on a PR, you can comment our the relevant function, and execute:
+For commenting on a PR, you should run:
 
 ```bash
-./pull_request.sh <token> <owner> <repo> <pr_num> <comment>
+#!/usr/bin/env bash
+
+source "pull_request.sh"
+
+comment_on_pr <token> <owner> <repo> <pr_num> <comment>
 ```
 
 ## Contributing
