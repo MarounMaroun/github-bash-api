@@ -1,0 +1,15 @@
+name: Test APIs
+
+on:
+  schedule:
+    - cron: "0 22 * * *"
+
+jobs:
+  run-tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Test pull_request.sh
+      run: ./tests/test_pr.sh ${{ secrets.GITHUB_TOKEN }} MarounMaroun github-bash-api-tests
