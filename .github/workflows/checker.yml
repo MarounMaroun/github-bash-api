@@ -10,4 +10,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           severity: 'info'
-          exclude: ''
+          exclude: 'SC1091'
