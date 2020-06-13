@@ -66,7 +66,7 @@ function get_pr_author() {
   local -r REPO="$3"
   local -r PR_NUM="$4"
   body=$(base_api::get "$TOKEN" "repos/$OWNER/$REPO/pulls/$PR_NUM")
-  echo "$body" | jq '.user.login'
+  echo "$body" | jq -r '.user.login'
 }
 
 function get_pr_changed_files_count() {
