@@ -1,4 +1,4 @@
-# GitHub Bash API
+# GitHub Bash API ![Test APIs](https://github.com/MarounMaroun/github-bash-api/workflows/Test%20APIs/badge.svg)
 
 Scripts for the GitHub API in Bash.
 

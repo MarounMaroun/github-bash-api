@@ -1,0 +1,15 @@
+name: Test APIs cron
+
+on:
+  schedule:
+    - cron: "0 22 * * *"
+
+jobs:
+  stale:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run tests
+      run: ./tests/test_pr.sh
