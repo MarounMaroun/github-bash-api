@@ -46,10 +46,19 @@ function remove_issue_label() {
   base_api::delete "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues/$ISSUE_NUM/labels/$PAYLOAD"
 }
 
-function get_all_desciptions() {
+function get_all_description() {
   local -r TOKEN="$1"
   local -r OWNER="$2"
   local -r GITHUB_REPO="$3"
   body=$(base_api::get "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues")
   echo "$body" | jq -r '.[] | "\(.assignee.login) \(.body)"'
+}
+
+function get_issue_title() {
+  local -r TOKEN="$1"
+  local -r OWNER="$2"
+  local -r GITHUB_REPO="$3"
+  local -r ISSUE_NUM="$4"
+  body=$(base_api::get "$TOKEN" "repos/$OWNER/$GITHUB_REPO/issues/$ISSUE_NUM")
+  echo "$body" | jq -r '.title'
 }
