@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Test pull_request.sh
-      run: ./tests/test_pr.sh ${{ secrets.GITHUB_TOKEN }} MarounMaroun github-bash-api-tests
+      - uses: actions/checkout@v1
+      - name: Run tests
+        run: |
+             ./tests/test_pr.sh ${{ secrets.GITHUB_TOKEN }} MarounMaroun github-bash-api-tests
+             ./tests/test_issues.sh ${{ secrets.GITHUB_TOKEN }} MarounMaroun github-bash-api-tests
