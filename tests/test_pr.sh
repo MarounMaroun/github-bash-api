@@ -21,3 +21,8 @@ echo "---= Running PR author test =---"
 author=$(get_pr_author "$TOKEN" "$OWNER" "$GITHUB_REPO" 1)
 echo "[INFO] got PR #1 author $author"
 [[ "$author" -eq "MarounMaroun" ]] || { echo "[X] PR author test failed"; exit 1; }
+
+echo "---= Running PR base branch test =---"
+base_branch=$(get_base_branch "$TOKEN" "$OWNER" "$GITHUB_REPO" 1)
+echo "[INFO] got base branch $base_branch for PR #1"
+[[ "$base_branch" -eq "pr1" ]] || { echo "[X] PR base branch test failed"; exit 1; }

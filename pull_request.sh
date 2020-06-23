@@ -127,3 +127,13 @@ function remove_pr_label() {
   # payload should be the name of the label
   base_api::delete "$TOKEN" "repos/$OWNER/$REPO/issues/$PR_NUM/labels/$PAYLOAD"
 }
+
+function get_base_branch() {
+  local -r TOKEN="$1"
+  local -r OWNER="$2"
+  local -r REPO="$3"
+  local -r PR_NUM="$4"
+  # payload should be the name of the label
+  body=$(base_api::get "$TOKEN" "repos/$OWNER/$REPO/pulls/$PR_NUM")
+  echo "$body" | jq -r '.head.ref'
+}
