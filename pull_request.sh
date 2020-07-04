@@ -14,6 +14,7 @@ function get_pr() {
   local -r TOKEN="$1"
   local -r OWNER="$2"
   local -r REPO="$3"
+  local -r PR_NUM="$4"
   base_api::get "$TOKEN" "repos/$OWNER/$REPO/pulls/$PR_NUM"
 }
 
