@@ -26,3 +26,8 @@ echo "---= Running PR base branch test =---"
 base_branch=$(get_base_branch "$TOKEN" "$OWNER" "$GITHUB_REPO" 1)
 echo "[INFO] got base branch $base_branch for PR #1"
 [[ "$base_branch" -eq "pr1" ]] || { echo "[X] PR base branch test failed"; exit 1; }
+
+echo "---= Running PR additions count =---"
+additions=$(get_pr_added_lines "$TOKEN" "$OWNER" "$GITHUB_REPO" 1)
+echo "[INFO] got added lines count $additions for PR #1"
+[[ "$additions" -eq 1 ]] || { echo "[X] PR additions count test failed"; exit 1; }

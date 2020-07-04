@@ -18,6 +18,24 @@ function get_pr() {
   base_api::get "$TOKEN" "repos/$OWNER/$REPO/pulls/$PR_NUM"
 }
 
+function get_pr_added_lines() {
+  local -r TOKEN="$1"
+  local -r OWNER="$2"
+  local -r REPO="$3"
+  local -r PR_NUM="$4"
+  pr=$(get_pr "$TOKEN" "$OWNER" "$REPO" "$PR_NUM")
+  echo "$pr" | jq '.additions'
+}
+
+function get_pr_deleted_lines() {
+  local -r TOKEN="$1"
+  local -r OWNER="$2"
+  local -r REPO="$3"
+  local -r PR_NUM="$4"
+  pr=$(get_pr "$TOKEN" "$OWNER" "$REPO" "$PR_NUM")
+  echo "$pr" | jq '.deletions'
+}
+
 function list_commits() {
   local -r TOKEN="$1"
   local -r OWNER="$2"
