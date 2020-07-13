@@ -71,6 +71,15 @@ function list_commits_files_name_only() {
   echo "$body" | jq -r '.[] | .filename'
 }
 
+function list_commits_files_added_name_only() {
+  local -r TOKEN="$1"
+  local -r OWNER="$2"
+  local -r REPO="$3"
+  local -r PR_NUM="$4"
+  body=$(base_api::get "$TOKEN" "repos/$OWNER/$REPO/pulls/$PR_NUM/files")
+  echo "$body" | jq -r 'map(select(.status != "removed")) | .[].filename'
+}
+
 function prs_count() {
   local -r TOKEN="$1"
   local -r OWNER="$2"
