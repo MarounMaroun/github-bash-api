@@ -15,7 +15,7 @@ GITHUB_REPO="$3"
 echo "---= Running PR count test =---"
 count=$(prs_count "$TOKEN" "$OWNER" "$GITHUB_REPO")
 echo "[INFO] got PRs count of $count"
-[[ "$count" -eq 2 ]] || { echo "[X] PR count test failed"; exit 1; }
+[[ "$count" -eq 3 ]] || { echo "[X] PR count test failed"; exit 1; }
 
 echo "---= Running PR author test =---"
 author=$(get_pr_author "$TOKEN" "$OWNER" "$GITHUB_REPO" 1)
