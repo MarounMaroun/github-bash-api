@@ -4,7 +4,7 @@ Scripts for the GitHub API in Bash.
 
 This repo aims to expose basic functions for using the [GitHub API](https://developer.github.com/v3/) in Bash.
 
-You can copy any of the functions and use it wherever you want. For example, in your own GitHub action script.
+You can copy any of the functions and use them as you with. For example, in your own GitHub action script.
 
 ## Usage
 
